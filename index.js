@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
 //can name anything  -> while importing a file in express use.js at end and this is not to be done when importing libraries
 import authRoute from "./routes/auth.js";
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
 
 //middlewares - it is able to reach our response and request before sending anything to the user
 app.use(express.json());
+app.use(cookieParser());
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
